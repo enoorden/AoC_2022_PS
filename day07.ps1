@@ -1,5 +1,5 @@
 # AoC2022 Day7 - PowerShell
-
+Remove-Variable data
 $data = Get-Content ./day07.input
 
 $dirs = @{}
@@ -10,9 +10,9 @@ foreach ($d in $data) {
     if ($b -eq 'cd') {
         switch ($c) {
             '..' { $currentDir.RemoveAt($currentDir.count - 1) }
-            default { 
+            default {
                 $currentDir.Add($c)
-                $dirs.Add(($currentDir -join '/'),0)
+                $dirs.Add(($currentDir -join '/'), 0)
             }
         }
     }
@@ -23,8 +23,8 @@ foreach ($d in $data) {
     }
 }
 
-($dirs.GetEnumerator() | where {$_.value -lt 100000 } | measure-object Value -Sum).Sum
+($dirs.GetEnumerator() | Where-Object { $_.value -lt 100000 } | Measure-Object Value -Sum).Sum
 
 #Part2
 $freeSpace = 70000000 - $dirs['/']
-($dirs.GetEnumerator() | where { ($freeSpace + $_.value) -ge 30000000 } | sort-object Value | Select -First 1).Value
+($dirs.GetEnumerator() | Where-Object { ($freeSpace + $_.value) -ge 30000000 } | Sort-Object Value | Select-Object -First 1).Value

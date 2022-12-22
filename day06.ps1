@@ -4,7 +4,7 @@
 
 #part1
 for ($i = 4; $i -lt $data.Count; $i++) {
-    if (($data[($i-3)..($i)] | select -Unique).count -eq 4) {
+    if (($data[($i - 3)..($i)] | Select-Object -Unique).count -eq 4) {
         $i + 1
         break
     }
@@ -12,7 +12,7 @@ for ($i = 4; $i -lt $data.Count; $i++) {
 
 #part2
 for ($i = 14; $i -lt $data.Count; $i++) {
-    if (($data[($i-13)..($i)] | select -Unique).count -eq 14) {
+    if (($data[($i - 13)..($i)] | Select-Object -Unique).count -eq 14) {
         $i + 1
         break
     }
